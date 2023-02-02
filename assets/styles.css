@@ -1,0 +1,31 @@
+:root {
+  --color-primary: #084A83;
+  --color-secondary: #f0f8ff;
+  --font-primary:'Caesar Dressing', cursive;
+}
+
+/* Fonts */
+.logo-text {
+  margin: auto;
+  font-family: var(--font-primary);
+  color: var(--color-primary);
+  letter-spacing: .2rem;
+}
+.logo-slogan{
+  font-size: .7rem;
+  letter-spacing: normal;
+}
+
+/* Buttons */
+
+.btn.primary {
+  background-color: var(--color-primary);
+  color: #f0f8ff;
+}
+
+/* Tables */
+.table {
+  margin: auto;
+  margin-top: 3rem;
+  max-width: calc(100vw/1.5);
+}
