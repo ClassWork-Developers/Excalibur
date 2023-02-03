@@ -182,7 +182,7 @@
               <input
                 type="text"
                 class="form-control"
-                id="inputAddress"
+                id="nombreProducto"
                 placeholder=""
               />
             </div>
@@ -191,35 +191,38 @@
                 <label for="inputEmail4" class="form-label"
                   >Unidades en Inventario</label
                 >
-                <input type="email" class="form-control" id="inputEmail4" />
+                <input type="email" class="form-control" id="cantidadProducto" />
               </div>
               <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">Precio</label>
                 <input
-                  type="password"
+                  type="number"
                   class="form-control"
-                  id="inputPassword4"
+                  id="precio"
                 />
               </div>
               <div class="col-md-6">
                 <label for="inputCity" class="form-label">Peso de la unidad</label>
-                <input type="text" class="form-control" id="inputCity" />
+                <input type="text" class="form-control" id="peso" />
               </div>
               <div class="col-md-4">
                 <label for="inputState" class="form-label">Gr</label>
-                <input type="radio" name="aja" id="">
+                <input type="radio" name="unidad" id="" value="Gr">
                 <label for="inputState" class="form-label">Kg</label>
-                <input type="radio" name="aja" id="">
+                <input type="radio" name="unidad" id="" value="Kg">
                 <label for="inputState" class="form-label">Lt</label>
-                <input type="radio" name="aja" id="">
+                <input type="radio" name="unidad" id="" value="Lt">
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Agregar</button>
+            <button type="button" class="btn btn-primary" onclick="Inventario.CreateObject()">Agregar</button>
           </div>
         </div>
       </div>
     </div>
+
+    <script src="crud.js"></script>
+
   </body>
 </html>
