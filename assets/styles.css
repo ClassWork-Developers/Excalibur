@@ -30,6 +30,7 @@
 .btn.primary {
   background-color: var(--color-primary);
   color: var(--color-secondary);
+  font-family: var(--font-primary);
 }
 .btn.primary:hover, .btn.primary:active, .btn.primary.full:hover {
   color: var(--color-primary);
