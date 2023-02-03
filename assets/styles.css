@@ -1,6 +1,7 @@
 :root {
   --color-primary: #084A83;
   --color-secondary: #f0f8ff;
+  --color-gray: #414141;
   --color-success: #14A44D;
   --color-danger: #DC4C64;
   --font-primary:'Caesar Dressing', cursive;
@@ -32,10 +33,6 @@
   color: var(--color-secondary);
   font-family: var(--font-primary);
 }
-.btn.primary:hover, .btn.primary:active, .btn.primary.full:hover {
-  color: var(--color-primary);
-  background-color: var(--color-secondary);
-}
 .btn.primary.full {
   background-color: var(--color-primary);
   border: 0;
@@ -44,11 +41,15 @@
   margin: 0;
   width: 100%;
 }
+.btn.btn-tertiary {
+  color: var(--color-gray);
+}
+.btn.primary:hover, .btn.primary:active, .btn.primary.full:hover {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
 .btn.btn-tertiary:hover, .btn.btn-tertiary:active {
   color: var(--color-primary) !important;
-}
-.btn.btn-tertiary:active {
-  border-color: var(--color-primary) !important;
 }
 .btn.color-danger:hover {
   color: var(--color-danger) !important;
@@ -62,11 +63,24 @@
   border: 1px solid #3b71ca !important;
 }
 .input-group .form-label {
-  margin-left: calc(var(--bs-border-width) * 43) !important;
+  margin-left: 2.5rem !important;
   z-index: 6;
 }
 .form-control:focus~.form-label {
   background-color: #ffffff;
+}
+.custom-select {
+  position: relative;
+}
+.select-fake-label {
+  background-color: white;
+  font-size: .8rem;
+  margin-left: 1rem;
+  position: absolute;
+  top: -10px;
+}
+.select.form-control:focus~.select-fake-label{
+  color: var(--color-primary);
 }
 
 /* Tables */
