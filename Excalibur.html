@@ -112,7 +112,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn primary"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
@@ -125,30 +125,71 @@
 
     <table class="table">
       <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+        <tr class="text-uppercase">
+          <th scope="col">Nombre del producto</th>
+          <th scope="col">
+            <p class="text-end m-0">
+              Unidades
+              <small class="d-block">peso de la unidad</small>
+            </p>
+          </th>
+          <th scope="col">
+            <p class="text-end">
+              Precio
+            </p>
+          </th>
+          <th scope="col">
+            <p class="text-center">
+              Opciones
+            </p>
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td class="text-end">Mark</td>
+          <td class="text-end">Otto</td>
+          <td class="d-flex justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-tertiary">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button type="button" class="btn btn-tertiary color-danger">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
+          <td class="text-end">Jacob</td>
+          <td class="text-end">Thornton</td>
+          <td class="d-flex justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-tertiary">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button type="button" class="btn btn-tertiary color-danger">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
+          <td class="text-end">Larry</td>
+          <td class="text-end">the Bird</td>
+          <td class="d-flex justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-tertiary">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button type="button" class="btn btn-tertiary color-danger">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -175,48 +216,45 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="col-12">
-              <label for="inputAddress" class="form-label"
-                >Nombre del Producto</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="nombreProducto"
-                placeholder=""
-              />
-            </div>
             <form class="row g-3">
-              <div class="col-md-6">
-                <label for="inputEmail4" class="form-label"
-                  >Unidades en Inventario</label
-                >
-                <input type="email" class="form-control" id="cantidadProducto" />
+              <div class="col-12 input-group form-outline">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="fa-solid fa-circle-check color-success"></i>
+                </span>
+                <input type="text" id="nombreProducto" class="form-control" />
+                <label class="form-label" for="nombreProducto">Nombre del producto</label>
               </div>
-              <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Precio</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="precio"
-                />
+              <div class="col-md-6 form-outline">
+                <input type="number" id="cantidadProducto" class="form-control" />
+                <label class="form-label" for="cantidadProducto">Unidades en inventario</label>
               </div>
-              <div class="col-md-6">
-                <label for="inputCity" class="form-label">Peso de la unidad</label>
-                <input type="text" class="form-control" id="peso" />
+              <div class="col-md-6 form-outline">
+                <input type="number" id="precio" class="form-control" />
+                <label class="form-label" for="precio">Precio</label>
               </div>
-              <div class="col-md-4">
-                <label for="inputState" class="form-label">Gr</label>
-                <input type="radio" name="unidad" id="" value="Gr">
-                <label for="inputState" class="form-label">Kg</label>
-                <input type="radio" name="unidad" id="" value="Kg">
-                <label for="inputState" class="form-label">Lt</label>
-                <input type="radio" name="unidad" id="" value="Lt">
+              <div class="col-md-6 form-outline">
+                <input type="number" id="peso" class="form-control" />
+                <label class="form-label" for="peso">Peso de la unidad</label>
+              </div>
+              <div class="col-md">
+                <div class="d-flex justify-content-around align-items-center m-auto h-100">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unidad" id="Gr"/>
+                    <label class="form-check-label" for="Gr"> Gr </label>
+                  </div><div class="form-check">
+                    <input class="form-check-input" type="radio" name="unidad" id="Kg"/>
+                    <label class="form-check-label" for="Kg"> Kg </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unidad" id="Lt"/>
+                    <label class="form-check-label" for="Lt"> Lt </label>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="Inventario.CreateObject()">Agregar</button>
+          <div class="modal-footer p-0 m-0">
+            <button type="button" class="btn primary full" onclick="Inventario.CreateObject()">Agregar</button>
           </div>
         </div>
       </div>
