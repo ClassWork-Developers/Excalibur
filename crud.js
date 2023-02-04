@@ -93,7 +93,7 @@ class Inventario {
             <td class="text-end">${precio}</td>
             <td class="d-flex justify-content-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-tertiary p-2" >
+                <button type="button" class="btn btn-tertiary p-2" onclick="Inventario.Actualizar('${id}')">
                     <i class="fa-solid fa-pen"></i>
                 </button>
                 <button type="button" class="btn btn-tertiary color-danger p-2" onclick="Inventario.Eliminar('${id}')">
@@ -101,7 +101,7 @@ class Inventario {
                 </button>
                 </div>
             </td>
-            <td class="text-end">${id}</td>
+            <td class="text-end">${id}</td>.
         </tr>
         `
         }
@@ -134,8 +134,15 @@ class Inventario {
 
     //Actualizar
 
-    static Actualizar(i) {
-        let Inventario = localStorage.getItem(JSON.parse('Inventario'));
+    static Actualizar(id) {
+
+        
+
+
+        let inventario = JSON.parse(localStorage.getItem('Data'));
+
+
+
         Inventario[i].nombre = document.getElementById('ID DEL INPUT DEL FORM');
         Inventario[i].marca = document.getElementById('ID DEL INPUT DEL FORM');
         Inventario[i].descripcion = document.getElementById(
