@@ -98,7 +98,7 @@ class Inventario {
               <td class="text-end">${peso}</td>
               <td class="text-end">${unidad}</td>
               <td class="text-end">${precio}</td>
-              <td class="d-flex justify-content-center">
+              <td class="text-end">
                   <div class="btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-tertiary p-2" data-bs-toggle="modal" onclick="Inventario.Actualizar('${id}')" data-bs-target="#edit-modal"">
                       <i class="fa-solid fa-pen"></i>
@@ -157,8 +157,24 @@ class Inventario {
         ).checked = true;
         document.getElementById('precioEdit').value = inventario[i].precio;
         let button = document.getElementById('guardarEdit');
-        button.addEventListener('click', function () {
-          Inventario.edit(i);
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+          let object = new Inventario(
+            document.getElementById('nombreProductoEdit').value,
+            document.getElementById('cantidadProductoEdit').value,
+            document.getElementById('pesoEdit').value,
+            document.getElementById('precioEdit').value,
+            document.querySelector(`[id="${inventario[i].unidad}Edit"]`).value,
+            uuid.v1()
+            );
+          var verificacion = document.getElementById('basic-addon2')
+          if (Inventario.Duplicated(object)) {
+            verificacion.classList.replace("color-success", "color-error")
+          //aqui ira un mensaje jeje
+          } else {
+            verificacion.classList.replace("color-error", "color-success")
+            Inventario.edit(i);
+          };
         });
       }
     }
@@ -262,9 +278,14 @@ addForm.addEventListener('submit', function (e) {
     document.getElementById('precio').value,
     document.querySelector('input[name="unidad"]:checked').value,
     uuid.v1()
-  );
-
+    );
+    
+  var verificacion = document.getElementById('basic-addon1')
   if (Inventario.Duplicated(object)) {
-    //aqui ira un mensaje jeje
-  } else Inventario.CreateObject(object);
+  verificacion.classList.replace("color-success", "color-error")
+  //aqui ira un mensaje jeje
+  } else {
+    verificacion.classList.replace("color-error", "color-success")
+    Inventario.CreateObject(object)
+  };
 });
