@@ -28,9 +28,7 @@ class Inventario {
         this.precio = precio;
         this.id = id;
     }
-
     //Crear y Guardar
-
     static CreateObject() {
         let object = new Inventario(
             document.getElementById('nombreProducto').value,
@@ -93,9 +91,7 @@ class Inventario {
             <td class="text-end">${precio}</td>
             <td class="d-flex justify-content-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-tertiary p-2">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
+                
                 <button type="button" class="btn btn-tertiary color-danger p-2">
                     <i class="fa-solid fa-trash"></i>
                 </button>
