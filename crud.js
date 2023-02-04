@@ -152,16 +152,16 @@ class Inventario {
       }
     }
   }
-  
+
   //Eliminar
 
   static Eliminar(id) {
     let inventario = JSON.parse(localStorage.getItem('Data'));
-    inventario.forEach((i) => {
-      if (i.id == id) {
+    for (let i = 0; i < inventario.length; i++) {
+      if (inventario[i].id == id) {
         inventario.splice(i, 1);
       }
-    });
+    }
     localStorage.setItem('Data', JSON.stringify(inventario));
     Inventario.read();
   }
@@ -204,6 +204,25 @@ class Inventario {
           No encontramos resultados en tu búsqueda
         </p>`;
     }
+  }
+  //Importar
+
+  static Import() {
+    let input_file = document.getElementById('input-file');
+    input_file.setAttribute('accept', '.json');
+    input_file.addEventListener('change', function () {
+      let file = input_file.files[0];
+      let reader = new FileReader();
+      reader.readAsText(file);
+      reader.addEventListener('load', function () {
+        let data = JSON.parse(reader.result);
+        for (let i = 0; i < data.length; i++) {
+          localStorage.setItem('Data', JSON.stringify(data));
+        }
+        location.reload();
+      });
+    });
+    input_file.click();
   }
 }
 
