@@ -31,7 +31,7 @@ class Inventario {
     //Crear y Guardar
 
     static CreateObject(object) {
-        if (localStorage.getItem('Data') === '[]') {
+        if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
             let inventario = [];
             inventario.push(object);
             localStorage.setItem('Data', JSON.stringify(inventario));
@@ -47,7 +47,7 @@ class Inventario {
 
     static Duplicated(object) {
         var dup = false
-        if (localStorage.getItem('Data') !== '[]') {
+        if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
             let inventario = JSON.parse(localStorage.getItem('Data'));
             inventario.forEach((i) => {
                 if (i.nombre == object.nombre && i.peso == object.peso && i.unidad == object.unidad) {
@@ -61,9 +61,9 @@ class Inventario {
     //Leer
 
     static read() {
-      console.log(localStorage.getItem('Data'))
-        if (localStorage.getItem('Data') !== '[]') {
+      if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
           let Inventario = JSON.parse(localStorage.getItem('Data'));
+          console.log(Inventario)
           document.getElementById('t-render').innerHTML = '';
           document.getElementById('menssage').innerHTML = '';
           for (let i = 0; i < Inventario.length; i++) {
