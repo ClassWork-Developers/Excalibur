@@ -75,11 +75,12 @@
                     <div class="col-3 custom-select mx-2">
                         <select
                             class="select form-control select-input placeholder-active"
+                            id="select"
                         >
-                            <option value="1">Nombre del producto</option>
-                            <option value="2">Unidades</option>
-                            <option value="3">Peso de la unidad</option>
-                            <option value="4">Precio</option>
+                            <option value="Producto">Nombre del producto</option>
+                            <option value="Unidad">Unidades</option>
+                            <option value="Peso">Peso de la unidad</option>
+                            <option value="Precio">Precio</option>
                         </select>
                         <div class="select-fake-label">Buscar por</div>
                     </div>
@@ -91,10 +92,10 @@
                                 placeholder="Search"
                                 aria-label="Search"
                                 aria-describedby="search-addon"
+                                id="search-addon"
                             />
                             <span
                                 class="input-group-text border-0"
-                                id="search-addon"
                             >
                                 <i class="fas fa-search"></i>
                             </span>
@@ -149,12 +150,6 @@
         </table>
         <div class="table-menssage" id="menssage">
         </div>
-        <!-- <div class="table-menssage">
-          <i class="fa-solid fa-file-excel"></i>
-          <p>
-            No encontramos resultados en tu búsqueda
-          </p>
-        </div> -->
         <!-- Modal Agregar -->
         <div
             class="modal fade"

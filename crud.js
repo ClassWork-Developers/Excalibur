@@ -19,6 +19,11 @@ inputPeso.addEventListener('input', function () {
     this.value = this.value * -1;
   }
 });
+var inputBuscar = document.getElementById('search-addon');
+inputBuscar.addEventListener('input', function () {
+  const tipoFil = document.getElementById('select').value
+  Inventario.Buscar(this.value, tipoFil)
+});
 class Inventario {
   constructor(nombre, cantidad, peso, precio, unidad, id) {
     this.nombre = nombre;
@@ -64,13 +69,18 @@ class Inventario {
 
   //Leer
 
-  static read() {
+  static read(data) {
+    let Inventario = []
+    if (data) {
+      Inventario = data
+    } else {
+      Inventario = JSON.parse(localStorage.getItem('Data'));
+    }
     if (
       localStorage.getItem('Data') !== null
         ? localStorage.getItem('Data') !== '[]'
         : false
     ) {
-      let Inventario = JSON.parse(localStorage.getItem('Data'));
       document.getElementById('t-render').innerHTML = '';
       document.getElementById('menssage').innerHTML = '';
       for (let i = 0; i < Inventario.length; i++) {
@@ -113,8 +123,6 @@ class Inventario {
           </p>`;
     }
   }
-  //editar
-
   //editar
 
   static edit(index) {
@@ -168,6 +176,34 @@ class Inventario {
     download.setAttribute('download', 'Exportacion' + '.json');
     download.click();
     download.remove();
+  }
+
+  //Buscar
+
+  static Buscar(buscar, tipo) {
+    let inventario = JSON.parse(localStorage.getItem('Data'));
+    let filtrados = []
+
+    if (tipo == 'Producto') {
+      filtrados = inventario.filter(inv => inv.nombre.includes(buscar))
+    } else if (tipo == 'Unidad') {
+      filtrados = inventario.filter(inv => inv.unidad.includes(buscar))
+    } else if (tipo == 'Peso') {
+      filtrados = inventario.filter(inv => inv.peso.includes(buscar))
+    } else {
+      filtrados = inventario.filter(inv => inv.precio.includes(buscar))
+    }
+    if (filtrados.length) {
+      Inventario.read(filtrados)
+    } else {
+      document.getElementById('t-render').innerHTML = '';
+      document.getElementById('menssage').innerHTML = '';
+      document.getElementById('menssage').innerHTML += `
+        <i class="fa-solid fa-file-excel"></i>
+        <p>
+          No encontramos resultados en tu búsqueda
+        </p>`;
+    }
   }
 }
 
