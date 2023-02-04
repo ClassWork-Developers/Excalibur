@@ -31,16 +31,7 @@ class Inventario {
 
     //Crear y Guardar
 
-    static CreateObject() {
-        let object = new Inventario(
-            document.getElementById('nombreProducto').value,
-            document.getElementById('cantidadProducto').value,
-            document.getElementById('peso').value,
-            document.getElementById('precio').value,
-            document.querySelector('input[name="unidad"]:checked').value,
-            uuid.v1()
-        );
-
+    static CreateObject(object) {
         if (localStorage.getItem('Data') === null) {
             let inventario = [];
             inventario.push(object);
@@ -56,18 +47,16 @@ class Inventario {
     }
 
     static Duplicated(object) {
-        if (localStorage.getItem('Data') === null) {
-            return false;
-        } else {
+        var dup = false
+        if (localStorage.getItem('Data') !== null) {
             let inventario = JSON.parse(localStorage.getItem('Data'));
             inventario.forEach((i) => {
-                if (i.nombre === object.nombre && i.peso === object.peso) {
-                    return true;
-                } else {
-                    return false;
+                if (i.nombre == object.nombre && i.peso == object.peso && i.unidad == object.unidad) {
+                    dup = true;
                 }
             });
         }
+        return dup;
     }
 
     //Leer
@@ -179,17 +168,32 @@ class Inventario {
 }
 
 function limpiarCampos() {
-    document.getElementById('nombreProducto').value = '';
-    document.getElementById('cantidadProducto').value = '';
-    document.getElementById('peso').value = '';
-    document.getElementById('precio').value = '';
-    document.querySelector('input[name="unidad"]:checked').value = false;
+    document.getElementById('nombreProducto').value = ''
+    document.getElementById('cantidadProducto').value = ''
+    document.getElementById('peso').value = ''
+    document.getElementById('precio').value = ''
+    document.querySelectorAll('#addProducto input[type=radio]').forEach(function(checkElement) {
+        checkElement.checked = false;
+    });
 }
 
 Inventario.read();
 
-let addForm = document.getElementById('addProducto');
-addForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    Inventario.CreateObject();
+let addForm = document.getElementById("addProducto");
+addForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  let object = new Inventario(
+    document.getElementById('nombreProducto').value,
+    document.getElementById('cantidadProducto').value,
+    document.getElementById('peso').value,
+    document.getElementById('precio').value,
+    document.querySelector('input[name="unidad"]:checked').value,
+    uuid.v1()
+  );
+
+  if (Inventario.Duplicated(object)) {
+    //aqui ira un mensaje jeje
+  } else (
+    Inventario.CreateObject(object)
+  )
 });
