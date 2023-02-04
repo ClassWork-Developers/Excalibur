@@ -228,9 +228,7 @@ class Inventario {
       reader.readAsText(file);
       reader.addEventListener('load', function () {
         let data = JSON.parse(reader.result);
-        for (let i = 0; i < data.length; i++) {
-          localStorage.setItem('Data', JSON.stringify(data));
-        }
+        localStorage.setItem('Data', JSON.stringify(data));
         location.reload();
       });
     });
