@@ -119,7 +119,6 @@ class Inventario {
           <i class="fa-solid fa-face-frown"></i>
           <p>
             Parece que no hay ningún producto agregado
-            <span>da clic aquí para Agregar</span>
           </p>`;
     }
   }
