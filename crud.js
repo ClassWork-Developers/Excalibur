@@ -189,6 +189,7 @@ class Inventario {
     download.remove();
   }
 
+
   //Buscar
 
   static Buscar(buscar, tipo) {
