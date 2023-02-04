@@ -104,10 +104,10 @@
             <i class="fa-solid fa-download"></i>
             Exportar
           </button>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="inputGroupFile01"
+          <div class="custom-file" onclick="Inventario.Import()">
+            <input type="file" class="custom-file-input" id="input-file"
               aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="inputGroupFile01">
+            <label class="custom-file-label" for="input-file">
               <i class="fa-solid fa-upload"></i>
               Importar
             </label>
@@ -380,6 +380,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="message-alert color-success">
+      <i class="fa-solid fa-circle-check"></i>
+      <p class="m-0 px-2">Se ha agregado satisfactoriamente</p>
     </div>
     <script src="crud.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid.min.js"></script>
