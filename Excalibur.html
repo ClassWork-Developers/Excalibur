@@ -137,21 +137,12 @@
             <thead>
                 <tr class="text-uppercase">
                     <th scope="row">#</th>
-                    <th scope="col">Nombre del producto</th>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Cantidad</th>
-                    <th scope="col">
-                        <p class="text-end m-0">
-                            Unidades
-                            <small class="d-block">peso de la unidad</small>
-                        </p>
-                    </th>
-                    <th scope="col">Unidad de Medida</th>
-                    <th scope="col">
-                        <p class="text-end">Precio</p>
-                    </th>
-                    <th scope="col">
-                        <p class="text-center">Opciones</p>
-                    </th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Unidad</th>
+                    <th scope="col">Precios</th>
+                    <th scope="col">Opciones</th>
                     <th scope="col">ID</th>
                 </tr>
             </thead>
@@ -179,7 +170,7 @@
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <form class="d-flex flex-wrap">
+                        <form class="d-flex flex-wrap" id="addProducto">
                             <div class="col-12 p-2">
                                 <div class="input-group form-outline">
                                     <span
@@ -194,6 +185,7 @@
                                         type="text"
                                         id="nombreProducto"
                                         class="form-control"
+                                        required
                                     />
                                     <label
                                         class="form-label"
@@ -206,8 +198,10 @@
                                 <div class="form-outline">
                                     <input
                                         type="number"
+                                        min="0"
                                         id="cantidadProducto"
                                         class="form-control"
+                                        required
                                     />
                                     <label
                                         class="form-label"
@@ -218,10 +212,13 @@
                             </div>
                             <div class="col-6 p-2">
                                 <div class="form-outline">
+                                    <i class="fas fa-dollar-sign trailing"></i>
                                     <input
                                         type="number"
+                                        min="0"
                                         id="precio"
                                         class="form-control"
+                                        required
                                     />
                                     <label class="form-label" for="precio"
                                         >Precio</label
@@ -232,8 +229,10 @@
                                 <div class="form-outline">
                                     <input
                                         type="number"
+                                        min="0"
                                         id="peso"
                                         class="form-control"
+                                        required
                                     />
                                     <label class="form-label" for="peso"
                                         >Peso de la unidad</label
@@ -291,17 +290,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <button
+                            type="submit"
+                            class="btn primary full"
+                            >
+                            Agregar
+                            </button>
                         </form>
                     </div>
-                    <div class="modal-footer p-0 m-0">
+                    <!-- <div class="modal-footer p-0 m-0" id="addForm">
                         <button
-                            type="button"
+                            type="submit"
                             class="btn primary full"
-                            onclick="Inventario.CreateObject()"
-                        >
+                            >
                             Agregar
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

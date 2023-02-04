@@ -1,12 +1,31 @@
 //Creacion de Objeto del Inventario
 
+var myModal = new bootstrap.Modal('#exampleModal')
+var inputPrecio = document.getElementById("precio");
+inputPrecio.addEventListener("input", function() {
+  if (this.value < 0) {
+    this.value = this.value * -1
+  }
+});
+var inputcantidadProducto = document.getElementById("cantidadProducto");
+inputcantidadProducto.addEventListener("input", function() {
+  if (this.value < 0) {
+    this.value = this.value * -1
+  }
+});
+var inputPeso = document.getElementById("peso");
+inputPeso.addEventListener("input", function() {
+  if (this.value < 0) {
+    this.value = this.value * -1
+  }
+});
 class Inventario {
     constructor(nombre, cantidad, peso, precio, unidad, id) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.peso = peso;
-        this.precio = precio;
         this.unidad = unidad;
+        this.precio = precio;
         this.id = id;
     }
 
@@ -31,6 +50,8 @@ class Inventario {
             inventario.push(object);
             localStorage.setItem('Data', JSON.stringify(inventario));
         }
+        limpiarCampos()
+        myModal.hide()
         Inventario.read();
     }
 
@@ -58,8 +79,8 @@ class Inventario {
             let nombre = Inventario[i].nombre;
             let cantidad = Inventario[i].cantidad;
             let peso = Inventario[i].peso;
-            let precio = Inventario[i].precio;
             let unidad = Inventario[i].unidad;
+            let precio = Inventario[i].precio;
             let id = Inventario[i].id;
 
             document.getElementById('t-render').innerHTML += `
@@ -68,8 +89,8 @@ class Inventario {
             <td class="text-end">${nombre}</td>
             <td class="text-end">${cantidad}</td>
             <td class="text-end">${peso}</td>
-            <td class="text-end">${precio}</td>
             <td class="text-end">${unidad}</td>
+            <td class="text-end">${precio}</td>
             <td class="d-flex justify-content-center">
                 <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-tertiary p-2">
@@ -149,4 +170,18 @@ class Inventario {
     }
 }
 
+function limpiarCampos() {
+    document.getElementById('nombreProducto').value = ''
+    document.getElementById('cantidadProducto').value = ''
+    document.getElementById('peso').value = ''
+    document.getElementById('precio').value = ''
+    document.querySelector('input[name="unidad"]:checked').value = false
+}
+
 Inventario.read();
+
+let addForm = document.getElementById("addProducto");
+addForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  Inventario.CreateObject()
+});
