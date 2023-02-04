@@ -79,7 +79,12 @@
   position: absolute;
   top: -10px;
 }
-.select.form-control:focus~.select-fake-label{
+input.form-control:valid:not(:focus)~label.form-label {
+  background-color: white;
+  font-size: .8rem;
+  top: -16px;
+}
+.select.form-control:focus~.select-fake-label {
   color: var(--color-primary);
 }
 
