@@ -90,7 +90,7 @@ class Inventario {
               <td class="text-end">${precio}</td>
               <td class="d-flex justify-content-center">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-tertiary p-2" onclick="Inventario.Actualizar('${id}')">
+                  <button type="button" class="btn btn-tertiary p-2" data-bs-toggle="modal" data-bs-target="#edit-modal"">
                       <i class="fa-solid fa-pen"></i>
                   </button>
                   <button type="button" class="btn btn-tertiary color-danger p-2" onclick="Inventario.Eliminar('${id}')">
