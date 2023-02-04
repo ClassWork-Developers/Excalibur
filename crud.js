@@ -1,12 +1,13 @@
 //Creacion de Objeto del Inventario
 
 class Inventario {
-    constructor(nombre, cantidad, peso, precio, unidad) {
+    constructor(nombre, cantidad, peso, precio, unidad, id) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.peso = peso;
         this.precio = precio;
         this.unidad = unidad;
+        this.id = id;
     }
 
     //Crear y Guardar
@@ -17,26 +18,20 @@ class Inventario {
             document.getElementById('cantidadProducto').value,
             document.getElementById('peso').value,
             document.getElementById('precio').value,
-            document.querySelector('input[name="unidad"]:checked').value
+            document.querySelector('input[name="unidad"]:checked').value,
+            uuid.v1()
         );
 
         if (localStorage.getItem('Data') === null) {
             let inventario = [];
             inventario.push(object);
-            if (Inventario.Duplicated(object) === false) {
-                localStorage.setItem('Data', JSON.stringify(inventario));
-            } else {
-                alert('Ya existe');
-            }
+            localStorage.setItem('Data', JSON.stringify(inventario));
         } else {
             let inventario = JSON.parse(localStorage.getItem('Data'));
             inventario.push(object);
-            if (Inventario.Duplicated(object) === false) {
-                localStorage.setItem('Data', JSON.stringify(inventario));
-            } else {
-                alert('Ya existe');
-            }
+            localStorage.setItem('Data', JSON.stringify(inventario));
         }
+        Inventario.read();
     }
 
     static Duplicated(object) {
@@ -58,6 +53,37 @@ class Inventario {
 
     static read() {
         let Inventario = JSON.parse(localStorage.getItem('Data'));
+        document.getElementById('t-render').innerHTML = '';
+        for (let i = 0; i < Inventario.length; i++) {
+            let nombre = Inventario[i].nombre;
+            let cantidad = Inventario[i].cantidad;
+            let peso = Inventario[i].peso;
+            let precio = Inventario[i].precio;
+            let unidad = Inventario[i].unidad;
+            let id = Inventario[i].id;
+
+            document.getElementById('t-render').innerHTML += `
+        <tr>
+            <td scope="row">1</th>
+            <td class="text-end">${nombre}</td>
+            <td class="text-end">${cantidad}</td>
+            <td class="text-end">${peso}</td>
+            <td class="text-end">${precio}</td>
+            <td class="text-end">${unidad}</td>
+            <td class="d-flex justify-content-center">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-tertiary p-2">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button type="button" class="btn btn-tertiary color-danger p-2">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                </div>
+            </td>
+            <td class="text-end">${id}</td>
+        </tr>
+        `;
+        }
     }
 
     //editar
@@ -109,4 +135,18 @@ class Inventario {
         });
         localStorage.setItem('Inventario', JSON.stringify(Inventario));
     }
+
+    //Exportar
+
+    static Export() {
+        let object = localStorage.getItem('Data');
+        let data = 'data:text/json;charset=utf-8,' + encodeURIComponent(object);
+        let download = document.createElement('a');
+        download.setAttribute('href', data);
+        download.setAttribute('download', 'Exportacion' + '.json');
+        download.click();
+        download.remove();
+    }
 }
+
+Inventario.read();
