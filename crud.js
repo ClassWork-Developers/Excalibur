@@ -1,23 +1,23 @@
 //Creacion de Objeto del Inventario
 
-var myModal = new bootstrap.Modal('#agg-modal');
-var inputPrecio = document.getElementById('precio');
-inputPrecio.addEventListener('input', function () {
-    if (this.value < 0) {
-        this.value = this.value * -1;
-    }
+var myModal = new bootstrap.Modal('#agg-modal')
+var inputPrecio = document.getElementById("precio");
+inputPrecio.addEventListener("input", function() {
+  if (this.value < 0) {
+    this.value = this.value * -1
+  }
 });
-var inputcantidadProducto = document.getElementById('cantidadProducto');
-inputcantidadProducto.addEventListener('input', function () {
-    if (this.value < 0) {
-        this.value = this.value * -1;
-    }
+var inputcantidadProducto = document.getElementById("cantidadProducto");
+inputcantidadProducto.addEventListener("input", function() {
+  if (this.value < 0) {
+    this.value = this.value * -1
+  }
 });
-var inputPeso = document.getElementById('peso');
-inputPeso.addEventListener('input', function () {
-    if (this.value < 0) {
-        this.value = this.value * -1;
-    }
+var inputPeso = document.getElementById("peso");
+inputPeso.addEventListener("input", function() {
+  if (this.value < 0) {
+    this.value = this.value * -1
+  }
 });
 class Inventario {
     constructor(nombre, cantidad, peso, precio, unidad, id) {
@@ -31,7 +31,7 @@ class Inventario {
     //Crear y Guardar
 
     static CreateObject(object) {
-        if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
+        if (localStorage.getItem('Data') === null) {
             let inventario = [];
             inventario.push(object);
             localStorage.setItem('Data', JSON.stringify(inventario));
@@ -40,14 +40,14 @@ class Inventario {
             inventario.push(object);
             localStorage.setItem('Data', JSON.stringify(inventario));
         }
-        limpiarCampos();
-        myModal.hide();
+        limpiarCampos()
+        myModal.hide()
         Inventario.read();
     }
 
     static Duplicated(object) {
         var dup = false
-        if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
+        if (localStorage.getItem('Data') !== null) {
             let inventario = JSON.parse(localStorage.getItem('Data'));
             inventario.forEach((i) => {
                 if (i.nombre == object.nombre && i.peso == object.peso && i.unidad == object.unidad) {
@@ -105,7 +105,6 @@ class Inventario {
           </p>`
         }
     }
-
     //editar
 
     static edit(name) {
@@ -135,34 +134,29 @@ class Inventario {
 
     static Actualizar(id) {
 
-        
+      let inventario = JSON.parse(localStorage.getItem('Data'));
 
-
-        let inventario = JSON.parse(localStorage.getItem('Data'));
-
-
-
-        Inventario[i].nombre = document.getElementById('ID DEL INPUT DEL FORM');
-        Inventario[i].marca = document.getElementById('ID DEL INPUT DEL FORM');
-        Inventario[i].descripcion = document.getElementById(
-            'ID DEL INPUT DEL FORM'
-        );
-        Inventario[i].precio = document.getElementById('ID DEL INPUT DEL FORM');
-        localStorage.setItem('Inventario', JSON.stringify(Inventario));
-    }
+      Inventario[i].nombre = document.getElementById('ID DEL INPUT DEL FORM');
+      Inventario[i].marca = document.getElementById('ID DEL INPUT DEL FORM');
+      Inventario[i].descripcion = document.getElementById(
+          'ID DEL INPUT DEL FORM'
+      );
+      Inventario[i].precio = document.getElementById('ID DEL INPUT DEL FORM');
+      localStorage.setItem('Inventario', JSON.stringify(Inventario));
+  }
 
     //Eliminar
 
     static Eliminar(id) {
-        let inventario = JSON.parse(localStorage.getItem('Data'));
-        inventario.forEach((i) => {
-            if (i.id == id) {
-                inventario.splice(i, 1);
-            }
-        });
-        localStorage.setItem('Data', JSON.stringify(inventario));
-        Inventario.read();
-    }
+      let inventario = JSON.parse(localStorage.getItem('Data'));
+      inventario.forEach((i) => {
+          if (i.id == id) {
+              inventario.splice(i, 1);
+          }
+      });
+      localStorage.setItem('Data', JSON.stringify(inventario));
+      Inventario.read();
+  }
 
     //Exportar
 
