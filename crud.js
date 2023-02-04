@@ -31,7 +31,7 @@ class Inventario {
     //Crear y Guardar
 
     static CreateObject(object) {
-        if (localStorage.getItem('Data') === null) {
+        if (localStorage.getItem('Data') === '[]') {
             let inventario = [];
             inventario.push(object);
             localStorage.setItem('Data', JSON.stringify(inventario));
@@ -47,7 +47,7 @@ class Inventario {
 
     static Duplicated(object) {
         var dup = false
-        if (localStorage.getItem('Data') !== null) {
+        if (localStorage.getItem('Data') !== '[]') {
             let inventario = JSON.parse(localStorage.getItem('Data'));
             inventario.forEach((i) => {
                 if (i.nombre == object.nombre && i.peso == object.peso && i.unidad == object.unidad) {
@@ -61,37 +61,49 @@ class Inventario {
     //Leer
 
     static read() {
-        let Inventario = JSON.parse(localStorage.getItem('Data'));
-        document.getElementById('t-render').innerHTML = '';
-        for (let i = 0; i < Inventario.length; i++) {
-            let nombre = Inventario[i].nombre;
-            let cantidad = Inventario[i].cantidad;
-            let peso = Inventario[i].peso;
-            let unidad = Inventario[i].unidad;
-            let precio = Inventario[i].precio;
-            let id = Inventario[i].id;
+      console.log(localStorage.getItem('Data'))
+        if (localStorage.getItem('Data') !== '[]') {
+          let Inventario = JSON.parse(localStorage.getItem('Data'));
+          document.getElementById('t-render').innerHTML = '';
+          document.getElementById('menssage').innerHTML = '';
+          for (let i = 0; i < Inventario.length; i++) {
+              let nombre = Inventario[i].nombre;
+              let cantidad = Inventario[i].cantidad;
+              let peso = Inventario[i].peso;
+              let unidad = Inventario[i].unidad;
+              let precio = Inventario[i].precio;
+              let id = Inventario[i].id;
 
-            document.getElementById('t-render').innerHTML += `
-        <tr>
-            <td scope="row">1</th>
-            <td class="text-end">${nombre}</td>
-            <td class="text-end">${cantidad}</td>
-            <td class="text-end">${peso}</td>
-            <td class="text-end">${unidad}</td>
-            <td class="text-end">${precio}</td>
-            <td class="d-flex justify-content-center">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-tertiary p-2" onclick="Inventario.Actualizar('${id}')">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button type="button" class="btn btn-tertiary color-danger p-2" onclick="Inventario.Eliminar('${id}')">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-                </div>
-            </td>
-            <td class="text-end">${id}</td>.
-        </tr>
-        `
+              document.getElementById('t-render').innerHTML += `
+          <tr>
+              <td class="text-end">${nombre}</td>
+              <td class="text-end">${cantidad}</td>
+              <td class="text-end">${peso}</td>
+              <td class="text-end">${unidad}</td>
+              <td class="text-end">${precio}</td>
+              <td class="d-flex justify-content-center">
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-tertiary p-2" onclick="Inventario.Actualizar('${id}')">
+                      <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button type="button" class="btn btn-tertiary color-danger p-2" onclick="Inventario.Eliminar('${id}')">
+                      <i class="fa-solid fa-trash"></i>
+                  </button>
+                  </div>
+              </td>
+              <td class="text-end">${id}</td>.
+          </tr>
+          `
+          }
+        } else {
+          document.getElementById('t-render').innerHTML = '';
+          document.getElementById('menssage').innerHTML = '';
+          document.getElementById('menssage').innerHTML += `
+          <i class="fa-solid fa-face-frown"></i>
+          <p>
+            Parece que no hay ningún producto agregado
+            <span>da clic aquí para Agregar</span>
+          </p>`
         }
     }
 
