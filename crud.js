@@ -63,7 +63,6 @@ class Inventario {
     static read() {
       if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
           let Inventario = JSON.parse(localStorage.getItem('Data'));
-          console.log(Inventario)
           document.getElementById('t-render').innerHTML = '';
           document.getElementById('menssage').innerHTML = '';
           for (let i = 0; i < Inventario.length; i++) {
