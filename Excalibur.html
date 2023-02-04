@@ -327,13 +327,13 @@
             class="modal fade"
             id="edit-modal"
             tabindex="-1"
-            aria-labelledby="exampleModalLabel"
+            aria-labelledby="exampleModalLabelEdit"
             aria-hidden="true"
         >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <h1 class="modal-title fs-5" id="exampleModalLabelEdit">
                             Editar Producto
                         </h1>
                         <button
@@ -344,7 +344,7 @@
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <form class="d-flex flex-wrap" id="addProducto">
+                        <form class="d-flex flex-wrap" id="editProducto">
                             <div class="col-12 p-2">
                                 <div class="input-group form-outline">
                                     <span
@@ -357,13 +357,13 @@
                                     </span>
                                     <input
                                         type="text"
-                                        id="nombreProducto"
+                                        id="nombreProductoEdit"
                                         class="form-control"
                                         required
                                     />
                                     <label
                                         class="form-label"
-                                        for="nombreProducto"
+                                        for="nombreProductoEdit"
                                         >Nombre del producto</label
                                     >
                                 </div>
@@ -373,13 +373,13 @@
                                     <input
                                         type="number"
                                         min="0"
-                                        id="cantidadProducto"
+                                        id="cantidadProductoEdit"
                                         class="form-control"
                                         required
                                     />
                                     <label
                                         class="form-label"
-                                        for="cantidadProducto"
+                                        for="cantidadProductoEdit"
                                         >Unidades en inventario</label
                                     >
                                 </div>
@@ -390,11 +390,11 @@
                                     <input
                                         type="number"
                                         min="0"
-                                        id="precio"
+                                        id="precioEdit"
                                         class="form-control"
                                         required
                                     />
-                                    <label class="form-label" for="precio"
+                                    <label class="form-label" for="precioEdit"
                                         >Precio</label
                                     >
                                 </div>
@@ -404,11 +404,11 @@
                                     <input
                                         type="number"
                                         min="0"
-                                        id="peso"
+                                        id="pesoEdit"
                                         class="form-control"
                                         required
                                     />
-                                    <label class="form-label" for="peso"
+                                    <label class="form-label" for="pesoEdit"
                                         >Peso de la unidad</label
                                     >
                                 </div>
@@ -423,11 +423,11 @@
                                             type="radio"
                                             name="unidad"
                                             value="Gr"
-                                            id="Gr"
+                                            id="GrEdit"
                                         />
                                         <label
                                             class="form-check-label"
-                                            for="Gr"
+                                            for="GrEdit"
                                         >
                                             Gr
                                         </label>
@@ -438,11 +438,11 @@
                                             type="radio"
                                             name="unidad"
                                             value="Kg"
-                                            id="Kg"
+                                            id="KgEdit"
                                         />
                                         <label
                                             class="form-check-label"
-                                            for="Kg"
+                                            for="KgEdit"
                                         >
                                             Kg
                                         </label>
@@ -453,11 +453,11 @@
                                             type="radio"
                                             value="Lt"
                                             name="unidad"
-                                            id="Lt"
+                                            id="LtEdit"
                                         />
                                         <label
                                             class="form-check-label"
-                                            for="Lt"
+                                            for="LtEdit"
                                         >
                                             Lt
                                         </label>
@@ -472,14 +472,6 @@
                             </button>
                         </form>
                     </div>
-                    <!-- <div class="modal-footer p-0 m-0" id="addForm">
-                        <button
-                            type="submit"
-                            class="btn primary full"
-                            >
-                            Agregar
-                        </button>
-                    </div> -->
                 </div>
             </div>
         </div>
