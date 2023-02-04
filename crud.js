@@ -90,7 +90,7 @@ class Inventario {
               <td class="text-end">${precio}</td>
               <td class="d-flex justify-content-center">
                   <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-tertiary p-2" data-bs-toggle="modal" data-bs-target="#edit-modal"">
+                  <button type="button" class="btn btn-tertiary p-2" data-bs-toggle="modal" onclick="Inventario.Actualizar('${id}')" data-bs-target="#edit-modal"">
                       <i class="fa-solid fa-pen"></i>
                   </button>
                   <button type="button" class="btn btn-tertiary color-danger p-2" onclick="Inventario.Eliminar('${id}')">
@@ -119,11 +119,16 @@ class Inventario {
 
   static edit(index) {
     let inventario = JSON.parse(localStorage.getItem('Data'));
-    inventario[index].nombre = document.getElementById('id del modal').value;
-    inventario[index].cantidad = document.getElementById('id del modal').value;
-    inventario[index].peso = document.getElementById('id del modal').value;
-    inventario[index].unidad = document.getElementById('id del modal').value;
-    inventario[index].precio = document.getElementById('id del modal').value;
+    inventario[index].nombre =
+      document.getElementById('nombreProductoEdit').value;
+    inventario[index].cantidad = document.getElementById(
+      'cantidadProductoEdit'
+    ).value;
+    inventario[index].peso = document.getElementById('pesoEdit').value;
+    inventario[index].unidad = document.querySelector(
+      'input[name="unidadEdit"]:checked'
+    ).value;
+    inventario[index].precio = document.getElementById('precioEdit').value;
     localStorage.setItem('Data', JSON.stringify(inventario));
     Inventario.read();
   }
@@ -135,12 +140,19 @@ class Inventario {
 
     for (let i = 0; i < inventario.length; i++) {
       if (inventario[i].id == id) {
-        document.getElementById('id del modal').value = inventario[i].nombre;
-        document.getElementById('id del modal').value = inventario[i].cantidad;
-        document.getElementById('id del modal').value = inventario[i].peso;
-        document.getElementById('id del modal').value = inventario[i].unidad;
-        document.getElementById('id del modal').value = inventario[i].precio;
-        Inventario.edit(i);
+        document.getElementById('nombreProductoEdit').value =
+          inventario[i].nombre;
+        document.getElementById('cantidadProductoEdit').value =
+          inventario[i].cantidad;
+        document.getElementById('pesoEdit').value = inventario[i].peso;
+        document.querySelector(
+          `[id="${inventario[i].unidad}Edit"]`
+        ).checked = true;
+        document.getElementById('precioEdit').value = inventario[i].precio;
+        let button = document.getElementById('guardarEdit');
+        button.addEventListener('click', function () {
+          Inventario.edit(i);
+        });
       }
     }
   }
