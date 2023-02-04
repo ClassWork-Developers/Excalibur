@@ -1,6 +1,6 @@
 //Creacion de Objeto del Inventario
 
-var myModal = new bootstrap.Modal('#exampleModal');
+var myModal = new bootstrap.Modal('#agg-modal');
 var inputPrecio = document.getElementById('precio');
 inputPrecio.addEventListener('input', function () {
     if (this.value < 0) {
