@@ -115,30 +115,33 @@ input.form-control:valid:not(:focus)~label.form-label {
   color: var(--color-primary);
 }
 .custom-file {
-  background-color: var(--color-secondary);
+  background-color: transparent;
   position: relative;
 }
 .custom-file-input {
   opacity: 0;
-  width: 100px;
+  width: 90px;
   height: 32px;
   display: inline-block;
 }
 .custom-file::before {
-
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: '\f093';
 }
 .custom-file::after {
   content: 'Importar';
+  color: var(--color-gray);
   opacity: 1;
+  margin: 0.4rem;
   position: absolute;
   right: 0;
   top: 0;
   padding: 0 1rem;
   font-size: 0.75rem;
-  z-index: 1;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--color-gray);
+  z-index: 1;
 }
 
 /* Tables */
