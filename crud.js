@@ -297,7 +297,7 @@ function mensajeError() {
   document.getElementById('notificacion').classList.add("color-error")
   document.getElementById('notificacion').innerHTML += `
   <i class="fa-solid fa-triangle-exclamation"></i>
-  <p class="m-0 px-2">Ha ocurrido un problema</p>`;
+  <p class="m-0 px-2">Producto duplicado</p>`;
   setTimeout(() => {
     document.getElementById('notificacion').classList.remove("color-error")
     document.getElementById('notificacion').innerHTML = '';
