@@ -143,6 +143,12 @@ input.form-control:valid:not(:focus)~label.form-label {
   font-weight: 500;
   z-index: 1;
 }
+.custom-file:hover {
+  color: var(--color-primary);
+}
+.custom-file:hover::after {
+  color: var(--color-primary);
+}
 
 /* Tables */
 tr.description {
