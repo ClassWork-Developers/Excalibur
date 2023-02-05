@@ -26,7 +26,23 @@
 .color-danger {
   color: var(--color-danger);
 }
-
+/* Navbar */
+.collapse-navbar {
+  display: none;
+}
+input.navbar-toggler:checked~.collapse-navbar {
+  position: absolute;
+  display: block;
+  padding: .2rem 1rem;
+  right: 0;
+  top: 5rem;
+  background-color: #fbfbfb;
+  box-shadow: var(--mdb-navbar-box-shadow);
+  width: 100%;
+}
+label i.fa-bars::before {
+  font-size: 1.5rem;
+}
 /* Buttons */
 .btn.primary {
   background-color: var(--color-primary);
@@ -57,6 +73,13 @@
 .btn-group i {
   font-size: 1.5rem;
   padding: .3rem;
+}
+.btn.text-link {
+  background-color: none;
+  color: var(--color-primary);
+  text-transform: capitalize;
+  text-decoration: underline;
+  box-shadow: none;
 }
 
 /* Form */
@@ -90,6 +113,32 @@ input.form-control:valid:not(:focus)~label.form-label {
 }
 .select.form-control:focus~.select-fake-label {
   color: var(--color-primary);
+}
+.custom-file {
+  background-color: var(--color-secondary);
+  position: relative;
+}
+.custom-file-input {
+  opacity: 0;
+  width: 100px;
+  height: 32px;
+  display: inline-block;
+}
+.custom-file::before {
+
+}
+.custom-file::after {
+  content: 'Importar';
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 1rem;
+  font-size: 0.75rem;
+  z-index: 1;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-gray);
 }
 
 /* Tables */
@@ -184,6 +233,16 @@ tr td:last-of-type {
     content: '';
   }
   tr td:last-of-type {
-    border-bottom: 1px solid rgb(225, 225, 225);
+    border-bottom: 1px solid #e1e1e1;
+  }
+}
+@media screen and (min-width: 992px) {
+  input.navbar-toggler:checked~.collapse-navbar {
+    top: 4.5rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .collapse-navbar {
+    display: block;
   }
 }

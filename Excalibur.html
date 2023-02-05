@@ -38,89 +38,82 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <!-- Container wrapper -->
       <div class="container-fluid">
-        <div>
-          <!-- Toggle button -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+          <img
+            src="./assets/Vector 1.svg"
+            height="50"
+            alt="Excalibur"
+            loading="lazy"
+          />
+        </a>
+        <p class="logo-text m-sm-0">
+          Excalibur
+          <span class="d-block logo-slogan"> Inventario virtual </span>
+        </p>
+        <div class="col-12 col-sm-5 col-md-3 custom-select order-2 order-md-0 m-2 px-2">
+          <select class="select form-control select-input placeholder-active" id="select">
+            <option value="Producto">Nombre del producto</option>
+            <option value="Unidad">Unidades</option>
+            <option value="Peso">Peso de la unidad</option>
+            <option value="Precio">Precio</option>
+          </select>
+          <div class="select-fake-label">Buscar por</div>
         </div>
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Navbar brand -->
-          <a class="navbar-brand mt-2 mt-lg-0" href="#">
-            <img
-              src="./assets/Vector 1.svg"
-              height="50"
-              alt="Excalibur"
-              loading="lazy"
+        <div class="col-12 col-sm container-fluid order-2 order-md-0 m-2 px-2">
+          <form class="d-flex input-group w-auto">
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+              id="search-addon"
             />
-          </a>
-          <p class="logo-text">
-            Excalibur
-            <span class="d-block logo-slogan"> Inventario virtual </span>
-          </p>
-          <div class="col-3 custom-select mx-2">
-            <select class="select form-control select-input placeholder-active" id="select">
-              <option value="Producto">Nombre del producto</option>
-              <option value="Unidad">Unidades</option>
-              <option value="Peso">Peso de la unidad</option>
-              <option value="Precio">Precio</option>
-            </select>
-            <div class="select-fake-label">Buscar por</div>
-          </div>
-          <div class="container-fluid">
-            <form class="d-flex input-group w-auto">
-              <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Search"
-                aria-label="Search"
-                aria-describedby="search-addon"
-                id="search-addon"
-              />
-              <span class="input-group-text border-0">
-                <i class="fas fa-search"></i>
-              </span>
-            </form>
-          </div>
+            <span class="input-group-text border-0">
+              <i class="fas fa-search"></i>
+            </span>
+          </form>
         </div>
-        <!-- Right elements -->
-        <div class="d-flex align-items-center">
-          <!-- Buttons -->
-          <button
-            type="button"
-            class="btn btn-tertiary mx-3"
-            data-mdb-ripple-color="light"
-            onclick="Inventario.Export()"
-          >
-            <i class="fa-solid fa-download"></i>
-            Exportar
-          </button>
-          <div class="custom-file" onclick="Inventario.Import()">
-            <input type="file" class="custom-file-input" id="input-file"
-              aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="input-file">
-              <i class="fa-solid fa-upload"></i>
-              Importar
-            </label>
+        <!-- Toggle button -->
+        <input
+          class="navbar-toggler d-none"
+          type="checkbox"
+          id="bars-menu"
+        />
+        <label class="col col-sm-8 col-md-auto order-1 d-xl-none text-end" for="bars-menu"><i class="fas fa-bars"></i></label>
+        <!-- Collapsible wrapper -->
+        <div class="collapse-navbar">
+          <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center">
+            <!-- Buttons -->
+            <div class="my-2">
+              <button
+                type="button"
+                class="btn btn-tertiary mx-3"
+                data-mdb-ripple-color="light"
+                onclick="Inventario.Export()"
+              >
+                <i class="fa-solid fa-download"></i>
+                Exportar
+              </button>
+            </div>
+            <div class="my-2">
+              <div class="custom-file" onclick="Inventario.Import()">
+                <input type="file" class="custom-file-input" id="input-file" aria-describedby="inputGroupFileAddon01">
+              </div>
+            </div>
+            <div class="my-2">
+              <button
+                type="button"
+                class="btn primary"
+                data-bs-toggle="modal"
+                data-bs-target="#agg-modal"
+              >
+                <i class="fa-solid fa-plus"></i>
+                Agregar producto
+              </button>
+            </div>
           </div>
-          <button
-            type="button"
-            class="btn primary"
-            data-bs-toggle="modal"
-            data-bs-target="#agg-modal"
-          >
-            <i class="fa-solid fa-plus"></i>
-            Agregar producto
-          </button>
         </div>
       </div>
     </nav>
