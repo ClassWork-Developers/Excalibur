@@ -219,7 +219,7 @@ tr td:last-of-type {
 .color-error {
   background-color: var(--color-danger);
 }
-.color-success {
+i.color-success {
   background-color: transparent;
   color: var(--color-success);
 }
