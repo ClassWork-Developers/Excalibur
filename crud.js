@@ -201,12 +201,24 @@ class Inventario {
 
   static Export() {
     let object = localStorage.getItem('Data');
-    let data = 'data:text/json;charset=utf-8,' + encodeURIComponent(object);
-    let download = document.createElement('a');
-    download.setAttribute('href', data);
-    download.setAttribute('download', 'Exportacion' + '.json');
-    download.click();
-    download.remove();
+    if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
+      let data = 'data:text/json;charset=utf-8,' + encodeURIComponent(object);
+      let download = document.createElement('a');
+      download.setAttribute('href', data);
+      download.setAttribute('download', 'Exportacion' + '.json');
+      download.click();
+      download.remove();
+    } else {
+      document.getElementById('notificacion').innerHTML = '';
+      document.getElementById('notificacion').classList.add("color-error")
+      document.getElementById('notificacion').innerHTML += `
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <p class="m-0 px-2">Asegurese de tener datos para exportar</p>`;
+      setTimeout(() => {
+        document.getElementById('notificacion').classList.remove("color-error")
+        document.getElementById('notificacion').innerHTML = '';
+      }, 5000)
+    }
   }
 
 
