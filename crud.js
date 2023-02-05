@@ -82,7 +82,8 @@ class Inventario {
       localStorage.getItem('Data') !== null
         ? localStorage.getItem('Data') !== '[]'
         : false
-    ) {
+    ) {      
+      document.getElementById('table').classList.remove('hiden')
       document.getElementById('t-render').innerHTML = '';
       document.getElementById('menssage').innerHTML = '';
       for (let i = 0; i < Inventario.length; i++) {
@@ -124,6 +125,7 @@ class Inventario {
         `;
       }
     } else {
+      document.getElementById('table').classList.add('hiden')
       document.getElementById('t-render').innerHTML = '';
       document.getElementById('menssage').innerHTML = '';
       document.getElementById('menssage').innerHTML += `
