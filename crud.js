@@ -323,3 +323,8 @@ addForm.addEventListener('submit', function (e) {
     Inventario.CreateObject(object);
   }
 });
+
+let editForm = document.getElementById('editProducto');
+editForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+});
