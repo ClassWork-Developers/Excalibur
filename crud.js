@@ -129,10 +129,21 @@ class Inventario {
       document.getElementById('t-render').innerHTML = '';
       document.getElementById('menssage').innerHTML = '';
       document.getElementById('menssage').innerHTML += `
+        <div class="table-message">
           <i class="fa-solid fa-face-frown"></i>
-          <p>
+          <p class="my-2">
             Parece que no hay ningún producto agregado
-          </p>`;
+            <button
+              type="button"
+              class="btn text-link d-block mx-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#agg-modal"
+            >
+              da clic aquí para agregar uno
+            </button>
+          </p>
+        </div>
+        `;
     }
   }
   //editar
@@ -238,10 +249,13 @@ class Inventario {
       document.getElementById('t-render').innerHTML = '';
       document.getElementById('menssage').innerHTML = '';
       document.getElementById('menssage').innerHTML += `
+      <div class="table-message">
         <i class="fa-solid fa-file-excel"></i>
-        <p>
+        <p class="my-2">
           No encontramos resultados en tu búsqueda
-        </p>`;
+        </p>
+      </div>
+      `;
     }
   }
   //Importar
