@@ -1,6 +1,7 @@
 //Creacion de Objeto del Inventario
 
 var myModal = new bootstrap.Modal('#agg-modal');
+var myModal2 = new bootstrap.Modal('#edit-modal');
 var inputPrecio = document.getElementById('precio');
 inputPrecio.addEventListener('input', function () {
   if (this.value < 0) {
@@ -45,6 +46,7 @@ class Inventario {
       inventario.push(object);
       localStorage.setItem('Data', JSON.stringify(inventario));
     }
+    mensajeSatisfactorio('agregado')
     limpiarCampos();
     myModal.hide();
     Inventario.read();
@@ -137,6 +139,8 @@ class Inventario {
     ).value;
     inventario[index].precio = document.getElementById('precioEdit').value;
     localStorage.setItem('Data', JSON.stringify(inventario));
+    myModal2.hide();
+    mensajeSatisfactorio('actualizado')
     Inventario.read();
   }
 
@@ -170,7 +174,7 @@ class Inventario {
           var verificacion = document.getElementById('basic-addon2')
           if (Inventario.Duplicated(object)) {
             verificacion.classList.replace("color-success", "color-error")
-          //aqui ira un mensaje jeje
+            mensajeError()
           } else {
             verificacion.classList.replace("color-error", "color-success")
             Inventario.edit(i);
@@ -264,6 +268,30 @@ function limpiarCampos() {
     });
 }
 
+function mensajeSatisfactorio(men) {
+  document.getElementById('notificacion').innerHTML = '';
+  document.getElementById('notificacion').classList.add("color-success")
+  document.getElementById('notificacion').innerHTML += `
+  <i class="fa-solid fa-circle-check"></i>
+  <p class="m-0 px-2">Se ha ` + men +` satisfactoriamente</p>`;
+  setTimeout(() => {
+    document.getElementById('notificacion').classList.remove("color-success")
+    document.getElementById('notificacion').innerHTML = '';
+  }, 5000)
+}
+
+function mensajeError() {
+  document.getElementById('notificacion').innerHTML = '';
+  document.getElementById('notificacion').classList.add("color-error")
+  document.getElementById('notificacion').innerHTML += `
+  <i class="fa-solid fa-triangle-exclamation"></i>
+  <p class="m-0 px-2">Ha ocurrido un problema</p>`;
+  setTimeout(() => {
+    document.getElementById('notificacion').classList.remove("color-error")
+    document.getElementById('notificacion').innerHTML = '';
+  }, 5000)
+}
+
 Inventario.read();
 
 let addForm = document.getElementById('addProducto');
@@ -281,7 +309,7 @@ addForm.addEventListener('submit', function (e) {
   var verificacion = document.getElementById('basic-addon1')
   if (Inventario.Duplicated(object)) {
   verificacion.classList.replace("color-success", "color-error")
-  //aqui ira un mensaje jeje
+  mensajeError()
   } else {
     verificacion.classList.replace("color-error", "color-success")
     Inventario.CreateObject(object)
