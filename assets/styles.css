@@ -211,11 +211,21 @@ tr td:last-of-type {
   right: 2rem;
   z-index: 100;
 }
-.message-alert.color-success {
+
+/* colors */
+.color-success {
   background-color: var(--color-success);
 }
-.message-alert.color-error {
+.color-error {
   background-color: var(--color-danger);
+}
+.color-success {
+  background-color: transparent;
+  color: var(--color-success);
+}
+i.color-error {
+  background-color: transparent;
+  color: var(--color-danger);
 }
 
 /* Responsive  */
