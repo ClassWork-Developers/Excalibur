@@ -1,5 +1,5 @@
 //Creacion de Objeto del Inventario
-
+var identificador = '';
 var myModal = new bootstrap.Modal('#agg-modal');
 var myModal2 = new bootstrap.Modal('#edit-modal');
 var inputPrecio = document.getElementById('precio');
@@ -22,8 +22,8 @@ inputPeso.addEventListener('input', function () {
 });
 var inputBuscar = document.getElementById('search-addon');
 inputBuscar.addEventListener('input', function () {
-  const tipoFil = document.getElementById('select').value
-  Inventario.Buscar(this.value, tipoFil)
+  const tipoFil = document.getElementById('select').value;
+  Inventario.Buscar(this.value, tipoFil);
 });
 class Inventario {
   constructor(nombre, cantidad, peso, precio, unidad, id) {
@@ -46,7 +46,7 @@ class Inventario {
       inventario.push(object);
       localStorage.setItem('Data', JSON.stringify(inventario));
     }
-    mensajeSatisfactorio('agregado')
+    mensajeSatisfactorio('agregado');
     limpiarCampos();
     myModal.hide();
     Inventario.read();
@@ -72,9 +72,9 @@ class Inventario {
   //Leer
 
   static read(data) {
-    let Inventario = []
+    let Inventario = [];
     if (data) {
-      Inventario = data
+      Inventario = data;
     } else {
       Inventario = JSON.parse(localStorage.getItem('Data'));
     }
@@ -160,7 +160,7 @@ class Inventario {
     inventario[index].precio = document.getElementById('precioEdit').value;
     localStorage.setItem('Data', JSON.stringify(inventario));
     myModal2.hide();
-    mensajeSatisfactorio('actualizado')
+    mensajeSatisfactorio('actualizado');
     Inventario.read();
   }
 
@@ -180,26 +180,7 @@ class Inventario {
           `[id="${inventario[i].unidad}Edit"]`
         ).checked = true;
         document.getElementById('precioEdit').value = inventario[i].precio;
-        let button = document.getElementById('guardarEdit');
-        button.addEventListener('click', function (e) {
-          e.preventDefault();
-          let object = new Inventario(
-            document.getElementById('nombreProductoEdit').value,
-            document.getElementById('cantidadProductoEdit').value,
-            document.getElementById('pesoEdit').value,
-            document.getElementById('precioEdit').value,
-            document.querySelector(`[id="${inventario[i].unidad}Edit"]`).value,
-            uuid.v1()
-            );
-          var verificacion = document.getElementById('basic-addon2')
-          if (Inventario.Duplicated(object)) {
-            verificacion.classList.replace("color-success", "color-error")
-            mensajeError()
-          } else {
-            verificacion.classList.replace("color-error", "color-success")
-            Inventario.edit(i);
-          };
-        });
+        identificador = i;
       }
     }
   }
@@ -221,7 +202,11 @@ class Inventario {
 
   static Export() {
     let object = localStorage.getItem('Data');
-    if (localStorage.getItem('Data') !== null ? localStorage.getItem('Data') !== '[]' : false) {
+    if (
+      localStorage.getItem('Data') !== null
+        ? localStorage.getItem('Data') !== '[]'
+        : false
+    ) {
       let data = 'data:text/json;charset=utf-8,' + encodeURIComponent(object);
       let download = document.createElement('a');
       download.setAttribute('href', data);
@@ -230,35 +215,34 @@ class Inventario {
       download.remove();
     } else {
       document.getElementById('notificacion').innerHTML = '';
-      document.getElementById('notificacion').classList.add("color-error")
+      document.getElementById('notificacion').classList.add('color-error');
       document.getElementById('notificacion').innerHTML += `
       <i class="fa-solid fa-triangle-exclamation"></i>
       <p class="m-0 px-2">Asegurese de tener datos para exportar</p>`;
       setTimeout(() => {
-        document.getElementById('notificacion').classList.remove("color-error")
+        document.getElementById('notificacion').classList.remove('color-error');
         document.getElementById('notificacion').innerHTML = '';
-      }, 5000)
+      }, 5000);
     }
   }
-
 
   //Buscar
 
   static Buscar(buscar, tipo) {
     let inventario = JSON.parse(localStorage.getItem('Data'));
-    let filtrados = []
+    let filtrados = [];
 
     if (tipo == 'Producto') {
-      filtrados = inventario.filter(inv => inv.nombre.includes(buscar))
+      filtrados = inventario.filter((inv) => inv.nombre.includes(buscar));
     } else if (tipo == 'Unidad') {
-      filtrados = inventario.filter(inv => inv.unidad.includes(buscar))
+      filtrados = inventario.filter((inv) => inv.unidad.includes(buscar));
     } else if (tipo == 'Peso') {
-      filtrados = inventario.filter(inv => inv.peso.includes(buscar))
+      filtrados = inventario.filter((inv) => inv.peso.includes(buscar));
     } else {
-      filtrados = inventario.filter(inv => inv.precio.includes(buscar))
+      filtrados = inventario.filter((inv) => inv.precio.includes(buscar));
     }
     if (filtrados.length) {
-      Inventario.read(filtrados)
+      Inventario.read(filtrados);
     } else {
       document.getElementById('t-render').innerHTML = '';
       document.getElementById('menssage').innerHTML = '';
@@ -305,26 +289,29 @@ function limpiarCampos() {
 
 function mensajeSatisfactorio(men) {
   document.getElementById('notificacion').innerHTML = '';
-  document.getElementById('notificacion').classList.add("color-success")
-  document.getElementById('notificacion').innerHTML += `
+  document.getElementById('notificacion').classList.add('color-success');
+  document.getElementById('notificacion').innerHTML +=
+    `
   <i class="fa-solid fa-circle-check"></i>
-  <p class="m-0 px-2">Se ha ` + men +` satisfactoriamente</p>`;
+  <p class="m-0 px-2">Se ha ` +
+    men +
+    ` satisfactoriamente</p>`;
   setTimeout(() => {
-    document.getElementById('notificacion').classList.remove("color-success")
+    document.getElementById('notificacion').classList.remove('color-success');
     document.getElementById('notificacion').innerHTML = '';
-  }, 5000)
+  }, 5000);
 }
 
 function mensajeError() {
   document.getElementById('notificacion').innerHTML = '';
-  document.getElementById('notificacion').classList.add("color-error")
+  document.getElementById('notificacion').classList.add('color-error');
   document.getElementById('notificacion').innerHTML += `
   <i class="fa-solid fa-triangle-exclamation"></i>
   <p class="m-0 px-2">Producto duplicado</p>`;
   setTimeout(() => {
-    document.getElementById('notificacion').classList.remove("color-error")
+    document.getElementById('notificacion').classList.remove('color-error');
     document.getElementById('notificacion').innerHTML = '';
-  }, 5000)
+  }, 5000);
 }
 
 Inventario.read();
@@ -339,14 +326,19 @@ addForm.addEventListener('submit', function (e) {
     document.getElementById('precio').value,
     document.querySelector('input[name="unidad"]:checked').value,
     uuid.v1()
-    );
-    
-  var verificacion = document.getElementById('basic-addon1')
+  );
+
+  var verificacion = document.getElementById('basic-addon1');
   if (Inventario.Duplicated(object)) {
-  verificacion.classList.replace("color-success", "color-error")
-  mensajeError()
+    verificacion.classList.replace('color-success', 'color-error');
+    mensajeError();
   } else {
-    verificacion.classList.replace("color-error", "color-success")
-    Inventario.CreateObject(object)
-  };
+    verificacion.classList.replace('color-error', 'color-success');
+    Inventario.CreateObject(object);
+  }
+});
+
+let editForm = document.getElementById('editProducto');
+editForm.addEventListener('submit', function (e) {
+  e.preventDefault();
 });
