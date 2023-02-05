@@ -126,14 +126,19 @@
     </nav>
     <table class="table">
       <thead>
-        <tr class="text-uppercase">
-          <th scope="col">Nombre</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Peso</th>
-          <th scope="col">Unidad</th>
-          <th scope="col">Precios</th>
-          <th scope="col">Opciones</th>
-          <th scope="col">ID</th>
+        <tr class="description text-uppercase">
+          <th class="col">
+            <p>
+              Nombre
+              <small class="d-block">ID</small>
+            </p>
+          </th>
+          <th class="col-3 text-end">
+            Cantidad
+            <small class="d-block">Peso</small>
+          </th>
+          <th class="col-3 text-end">Precios</th>
+          <th class="col-3 text-center">Opciones</th>
         </tr>
       </thead>
       <tbody id="t-render"></tbody>

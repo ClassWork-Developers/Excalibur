@@ -95,24 +95,33 @@ class Inventario {
 
         document.getElementById('t-render').innerHTML += `
           <tr>
-              <td class="text-end">${nombre}</td>
-              <td class="text-end">${cantidad}</td>
-              <td class="text-end">${peso}</td>
-              <td class="text-end">${unidad}</td>
-              <td class="text-end">${precio}</td>
-              <td class="text-end">
-                  <div class="btn-group" role="group" aria-label="Basic example">
+            <td class="col nombre-id text-capitalize text-end text-md-start">
+              <p>
+                ${nombre}
+                <small class="d-block id">${id}</small>
+              </p>
+            </td>
+            <td class="col col-md-3 cantidad-peso text-end">
+              <p class="col-9">
+                ${cantidad}
+                <small class="d-block">${peso}${unidad}</small>
+              </p>
+            </td>
+            <td class="col-md-3 text-end precio">${precio}$</td>
+            <td class="col-md-3 opciones">
+              <div class="col-md-auto d-flex justify-content-md-center">
+                <div class="btn-group" role="group">
                   <button type="button" class="btn btn-tertiary p-2" data-bs-toggle="modal" onclick="Inventario.Actualizar('${id}')" data-bs-target="#edit-modal"">
-                      <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-pen"></i>
                   </button>
                   <button type="button" class="btn btn-tertiary color-danger p-2" onclick="Inventario.Eliminar('${id}')">
-                      <i class="fa-solid fa-trash"></i>
+                    <i class="fa-solid fa-trash"></i>
                   </button>
-                  </div>
-              </td>
-              <td class="text-end">${id}</td>.
+                </div>
+              </div>
+            </td>
           </tr>
-          `;
+        `;
       }
     } else {
       document.getElementById('t-render').innerHTML = '';

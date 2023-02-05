@@ -54,6 +54,10 @@
 .btn.color-danger:hover {
   color: var(--color-danger) !important;
 }
+.btn-group i {
+  font-size: 1.5rem;
+  padding: .3rem;
+}
 
 /* Form */
 .form-control {
@@ -89,10 +93,41 @@ input.form-control:valid:not(:focus)~label.form-label {
 }
 
 /* Tables */
+tr.description {
+  display: none;
+}
+tr {
+  display: flex;
+  flex-direction: column;
+}
+td {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+td::before {
+  text-align: start;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+td.nombre-id::before {
+  content: 'nombre id';
+}
+td.cantidad-peso::before {
+  content: 'cantidad peso';
+}
+td.precio::before {
+  content: 'precio';
+}
+td.opciones::before {
+  content: 'opciones';
+}
+tr td:last-of-type {
+  border-bottom: .3rem solid var(--color-primary);
+}
 .table {
   margin: auto;
   margin-top: 3rem;
-  max-width: calc(100vw/1.5);
 }
 
 /* Messages */
@@ -122,4 +157,33 @@ input.form-control:valid:not(:focus)~label.form-label {
 }
 .message-alert.color-error {
   background-color: var(--color-danger);
+}
+
+@media screen and (min-width: 576px) {
+  .table {
+    max-width: calc(100vw/1.5);
+  }
+}
+@media screen and (min-width: 768px) {
+  tr.description {
+    display: flex;
+  }
+  tr {
+    flex-direction: row;
+  }
+  td.nombre-id::before {
+    content: '';
+  }
+  td.cantidad-peso::before {
+    content: '';
+  }
+  td.precio::before {
+    content: '';
+  }
+  td.opciones::before {
+    content: '';
+  }
+  tr td:last-of-type {
+    border-bottom: 1px solid rgb(225, 225, 225);
+  }
 }
