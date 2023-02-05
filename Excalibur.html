@@ -276,98 +276,96 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <form class="d-flex flex-wrap" id="editProducto">
-              <div class="col-12 p-2">
-                <div class="input-group form-outline">
-                  <span class="input-group-text">
-                    <i class="fa-solid fa-circle-check color-success" id="basic-addon2"></i>
-                  </span>
-                  <input
-                    type="text"
-                    id="nombreProductoEdit"
-                    class="form-control"
-                    required
-                  />
-                  <label class="form-label" for="nombreProductoEdit"
-                    >Nombre del producto</label
-                  >
-                </div>
-              </div>
-              <div class="col-6 p-2">
-                <div class="form-outline">
-                  <input
-                    type="number"
-                    min="0"
-                    id="cantidadProductoEdit"
-                    class="form-control"
-                    required
-                  />
-                  <label class="form-label" for="cantidadProductoEdit"
-                    >Unidades en inventario</label
-                  >
-                </div>
-              </div>
-              <div class="col-6 p-2">
-                <div class="form-outline">
-                  <i class="fas fa-dollar-sign trailing"></i>
-                  <input
-                    type="number"
-                    min="0"
-                    id="precioEdit"
-                    class="form-control"
-                    required
-                  />
-                  <label class="form-label" for="precioEdit">Precio</label>
-                </div>
-              </div>
-              <div class="col-md-6 p-2">
-                <div class="form-outline">
-                  <input
-                    type="number"
-                    min="0"
-                    id="pesoEdit"
-                    class="form-control"
-                    required
-                  />
-                  <label class="form-label" for="pesoEdit"
-                    >Peso de la unidad</label
-                  >
-                </div>
-              </div>
-              <div class="col-md p-2">
-                <div
-                  class="d-flex justify-content-around align-items-center m-auto h-100"
-                >
-                  <div class="form-check">
+          <div class="h-100">
+            <form class="d-flex flex-column justify-content-between h-100" id="editProducto">
+              <div class="d-flex flex-wrap justify-content-center p-3">
+                <div class="col-12 p-2">
+                  <div class="input-group form-outline">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-circle-check color-success" id="basic-addon2"></i>
+                    </span>
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      name="unidadEdit"
-                      value="Gr"
-                      id="GrEdit"
+                      type="text"
+                      id="nombreProductoEdit"
+                      class="form-control"
+                      required
                     />
-                    <label class="form-check-label" for="GrEdit"> Gr </label>
+                    <label class="form-label" for="nombreProductoEdit">Nombre del producto</label>
                   </div>
-                  <div class="form-check">
+                </div>
+                <div class="col-12 col-sm-6 p-2">
+                  <div class="form-outline">
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      name="unidadEdit"
-                      value="Kg"
-                      id="KgEdit"
+                      type="number"
+                      min="0"
+                      id="cantidadProductoEdit"
+                      class="form-control"
+                      required
                     />
-                    <label class="form-check-label" for="KgEdit"> Kg </label>
+                    <label class="form-label" for="cantidadProductoEdit"
+                      >Unidades en inventario</label
+                    >
                   </div>
-                  <div class="form-check">
+                </div>
+                <div class="col-12 col-sm-6 p-2">
+                  <div class="form-outline">
+                    <i class="fas fa-dollar-sign trailing"></i>
                     <input
-                      class="form-check-input"
-                      type="radio"
-                      value="Lt"
-                      name="unidadEdit"
-                      id="LtEdit"
+                      type="number"
+                      min="0"
+                      id="precioEdit"
+                      class="form-control"
+                      required
                     />
-                    <label class="form-check-label" for="LtEdit"> Lt </label>
+                    <label class="form-label" for="precioEdit">Precio</label>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 p-2">
+                  <div class="form-outline">
+                    <input
+                      type="number"
+                      min="0"
+                      id="pesoEdit"
+                      class="form-control"
+                      required
+                    />
+                    <label class="form-label" for="pesoEdit"
+                      >Peso de la unidad</label
+                    >
+                  </div>
+                </div>
+                <div class="col-auto col-sm p-2">
+                  <div class="d-flex justify-content-around align-items-center m-auto h-100">
+                    <div class="form-check mx-3 mx-sm-1">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="unidadEdit"
+                        value="Gr"
+                        id="GrEdit"
+                      />
+                      <label class="form-check-label" for="GrEdit"> Gr </label>
+                    </div>
+                    <div class="form-check mx-3 mx-sm-1">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="unidadEdit"
+                        value="Kg"
+                        id="KgEdit"
+                      />
+                      <label class="form-check-label" for="KgEdit"> Kg </label>
+                    </div>
+                    <div class="form-check mx-3 mx-sm-1">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        value="Lt"
+                        name="unidadEdit"
+                        id="LtEdit"
+                      />
+                      <label class="form-check-label" for="LtEdit"> Lt </label>
+                    </div>
                   </div>
                 </div>
               </div>
