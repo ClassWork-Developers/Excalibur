@@ -188,6 +188,11 @@ tr td:last-of-type {
   margin-top: 3rem;
 }
 
+/* Modals */
+.modal-content {
+  height: 95vh;
+}
+
 /* Messages */
 .table-message {
   margin: 4.5rem;
@@ -197,8 +202,8 @@ tr td:last-of-type {
   font-size: 10rem;
 }
 .link-message {
-  text-decoration: underline;
   cursor: pointer;
+  text-decoration: underline;
 }
 .message-alert {
   align-items: center;
@@ -206,6 +211,7 @@ tr td:last-of-type {
   bottom: 2rem;
   color: var(--color-secondary);
   display: flex;
+  font-size: .8rem;
   padding: 1rem;
   position: absolute;
   right: 2rem;
@@ -232,6 +238,9 @@ i.color-error {
 @media screen and (min-width: 576px) {
   .table {
     max-width: calc(100vw/1.5);
+  }
+  .modal-content {
+    height: min-content;
   }
 }
 @media screen and (min-width: 768px) {
